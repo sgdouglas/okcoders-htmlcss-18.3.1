@@ -1,0 +1,61 @@
+<html>
+	<script>
+
+		class Animal {
+			constructor(species, gender, size, hungerLevel) {
+				console.log("called")
+				this.species = species
+				this.gender = gender
+				this.size = size
+				this.hungerLevel = 10
+			}
+
+			speak() {
+				console.log(`hello I'm a ${this.species} that is ${this.size} and I am ${this.gender}`)
+			}
+
+			eat(units) {
+				this.hungerLevel -= units
+				return `OM NOM NOM!  Hunger level is now ${this.hungerLevel}.`
+			}
+
+			exercise(units) {
+				this.hungerLevel += units
+				return `HUFF PUFF!  Hunger level is now ${this.hungerLevel}.`
+			}
+		}
+
+		class Dog extends Animal {
+			constructor(gender, size, breed, barkLevel) {
+				super("dog", gender, size)
+				this.breed = breed
+				this.barkLevel = barkLevel
+			}
+		
+			bark() {
+				if(this.barkLevel > 5) {
+				console.log("WOOF!")
+				} else {
+				console.log("woof")
+				}
+			}
+
+			static smallDog(gender, breed) {
+				return new Dog(gender, "small", breed, 4)
+			}
+
+		}
+
+		const dog = new Dog("female", "large", "lab", 10)
+		const dog2 = new Dog("male", "small", "lab", 4)
+		const dog3ThatIsSameAsDog2 = Dog.smallDog("male", "lab")
+		console.log(dog.bark())
+		console.log(dog2.bark())
+		console.log(dog3ThatIsSameAsDog2.bark())
+
+
+
+
+		
+	</script>
+<html>
